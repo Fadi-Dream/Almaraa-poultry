@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>المرعى الريفي للدواجن</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f8fc;--card:#fff;--bd:#e2e5f0;--inp:#f4f5fa;--txt:#1a1d2e;--mut:#667088;--acc:#c8790e;--grn:#27ae60;--red:#c0392b;--blu:#2980b9;--sh:0 2px 10px rgba(0,0,0,.07);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0f17;--card:#1a1d27;--bd:#2a2d3e;--inp:#12151e;--txt:#e8e9f0;--mut:#8b8fa8;--acc:#f5a623;--grn:#2ecc71;--red:#e74c3c;--blu:#3498db;--sh:0 2px 12px rgba(0,0,0,.45)}}
+:root[data-theme="dark"]{--bg:#0d0f17;--card:#1a1d27;--bd:#2a2d3e;--inp:#12151e;--txt:#e8e9f0;--mut:#8b8fa8;--acc:#f5a623;--grn:#2ecc71;--red:#e74c3c;--blu:#3498db;--sh:0 2px 12px rgba(0,0,0,.45)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--txt);font-family:'Tajawal','Cairo',sans-serif}
+#app{max-width:520px;margin:0 auto;padding:0 14px 110px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+h2{font-size:20px;font-weight:900;margin:6px 0 14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
+.ct{font-size:11px;color:var(--mut);font-weight:700;display:block;margin-bottom:8px}
+.row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.box{background:var(--inp);border-radius:12px;padding:10px 6px;text-align:center}
+.big{font-size:24px;font-weight:900}.k{text-align:center}.k b{display:block;font-size:24px;font-weight:900}
+small{color:var(--mut);font-size:11px}
+input,select{width:100%;background:var(--inp);border:1px solid var(--bd);border-radius:10px;padding:10px 12px;color:var(--txt);font:inherit;font-size:14px}
+label{font-size:13px;color:var(--mut);font-weight:600;display:block;margin-bottom:4px}
+.fg{margin-bottom:12px}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:12px 16px;font-weight:800;font-size:14px;color:#fff;width:100%}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.sm{width:auto;padding:6px 12px;font-size:12px;border-radius:8px}
+.acc{background:var(--acc)}.grn{background:var(--grn)}.red{background:var(--red)}.blu{background:var(--blu)}
+.out{background:transparent;color:var(--acc);border:1.5px solid var(--acc)}
+.tx-acc{color:var(--acc)}.tx-grn{color:var(--grn)}.tx-red{color:var(--red)}.tx-blu{color:var(--blu)}.mut{color:var(--mut)}
+.w{background:var(--inp);color:var(--txt);border:1px solid var(--bd);border-radius:10px;padding:8px 4px;text-align:center;cursor:pointer;font-weight:700;font-size:12px}
+.w.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.tag{border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;background:var(--inp)}
+.hi{background:color-mix(in srgb,var(--acc) 12%,transparent);border:1px solid color-mix(in srgb,var(--acc) 40%,transparent);border-radius:12px;padding:12px;margin-bottom:12px}
+.warn{border-color:color-mix(in srgb,var(--red) 40%,transparent);background:color-mix(in srgb,var(--red) 10%,transparent)}
+.item{border-bottom:1px solid var(--bd);padding:10px 0}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;background:var(--card);border-top:1px solid var(--bd);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);z-index:20}
+nav button{flex:1;background:none;color:var(--mut);border-radius:0;padding:8px 2px 6px;font-size:10px;font-weight:600;position:relative}
+nav button.on{color:var(--acc);font-weight:800}nav button span{display:block;font-size:20px}
+nav i{position:absolute;top:2px;left:50%;margin-left:6px;background:var(--red);color:#fff;border-radius:8px;padding:0 5px;font-size:9px;font-style:normal}
+.mb{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:30;display:flex;align-items:flex-end;justify-content:center}
+.mx{background:var(--card);border-radius:20px 20px 0 0;padding:20px;width:100%;max-width:520px;max-height:90vh;overflow:auto}
+#toast{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);color:#fff;padding:8px 16px;border-radius:8px;font-weight:700;font-size:13px;z-index:100;display:none}
+.bar{background:var(--bd);border-radius:4px;height:6px;overflow:hidden}.bar div{height:100%}
+.chk{display:flex;gap:10px;align-items:center;padding:12px;background:var(--inp);border-radius:10px;margin-bottom:14px;color:var(--acc);font-weight:600;font-size:14px}
+.chk input{width:auto}
+.dsk{display:none}
+.tb{width:auto;background:var(--inp);color:var(--txt);padding:6px 10px;font-size:14px;border-radius:8px}
+@media(min-width:900px){
+#app{max-width:none;margin:0;margin-inline-start:240px;padding:0 32px 40px}
+#app>*:not(nav):not(.mb){max-width:1100px}
+nav{top:0;bottom:0;left:auto;right:auto;inset-inline-start:0;transform:none;width:240px;max-width:none;flex-direction:column;border-top:0;border-inline-end:1px solid var(--bd);padding:20px 0;justify-content:flex-start}
+nav button{flex:none;display:flex;align-items:center;gap:12px;padding:12px 20px;font-size:14px;text-align:start}
+nav button span{display:inline;font-size:18px}
+nav i{position:static;margin-inline-start:auto;margin-left:0}
+.dsk{display:flex}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.mb{align-items:center}.mx{border-radius:20px}
+}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+<div id="app"></div>
+<script>
+const W=[800,900,1000],PER=10,DEP=5,K='almaraa_v4_';
+const tk=()=>new Date().toISOString().slice(0,10);
+const ld=(k,d)=>{try{const v=localStorage.getItem(K+k);return v?JSON.parse(v):d}catch{return d}};
+const sv=()=>{try{localStorage.setItem(K+'day',JSON.stringify(day));localStorage.setItem(K+'archive',JSON.stringify(arch));localStorage.setItem(K+'debts',JSON.stringify(debts))}catch{}};
+const emptyDay=()=>({date:tk(),open:{800:0,900:0,1000:0},stock:{800:0,900:0,1000:0},purchases:[],prices:{sell:{800:18,900:20,1000:22},buy:{800:14,900:16,1000:18}},sales:[],baskets:[],agentInv:[],agentExp:[],agentCash:'',started:false});
+let day=ld('day',null);if(!day||day.date!==tk())day=emptyDay();day.agentInv=day.agentInv||[];day.agentExp=day.agentExp||[];if(day.agentCash==null)day.agentCash='';
+let arch=ld('archive',[]),debts=ld('debts',{});
+let scr='home',modal=null,dsel=null,payAmt='',payNote='',md={n:'',a:'',note:''},np={w:800,qty:'',cpu:''};
+const f=n=>Number(n||0).toLocaleString(LC());
+const rev=d=>d.sales.reduce((s,x)=>s+x.total,0);
+const cost=d=>(d.purchases||[]).reduce((s,p)=>s+p.qty*p.cpu,0);
+const prof=d=>rev(d)-cost(d);
+const units=d=>d.sales.reduce((s,x)=>s+x.items.reduce((a,i)=>a+i.qty,0),0);
+const dl=d=>new Date(d+'T12:00:00').toLocaleDateString(LC(),{weekday:'short',month:'numeric',day:'numeric'});
+const ml=m=>new Date(m+'-01T12:00:00').toLocaleDateString(LC(),{month:'long',year:'numeric'});
+const pm=x=>x==='cash'?'كاش':x==='deferred'?'آجل':'شبكة';
+const pc=x=>x==='cash'?'grn':x==='deferred'?'red':'blu';
+const bal=e=>e.amount-e.payments.reduce((s,p)=>s+p.amount,0);
+const rb=n=>debts[n].entries.reduce((s,e)=>s+bal(e),0);
+const owing=()=>Object.keys(debts).filter(n=>rb(n)>0);
+const pending=()=>day.baskets.reduce((s,b)=>s+b.taken-b.ret,0);
+function tst(m,err){const t=document.getElementById('toast');t.textContent=T(m);t.style.background=err?'var(--red)':'var(--grn)';t.style.display='block';clearTimeout(tst.h);tst.h=setTimeout(()=>t.style.display='none',3000)}
+function theme(){const r=document.documentElement,dk=getComputedStyle(r).getPropertyValue('--bg').trim()==='#0d0f17';r.dataset.theme=dk?'light':'dark';try{localStorage.setItem('almaraa_theme',r.dataset.theme)}catch{}}
+try{const t=localStorage.getItem('almaraa_theme');if(t)document.documentElement.dataset.theme=t}catch{}
+
+/* sale form */
+function newSale(){return{cust:'',items:[{w:800,qty:'',price:day.prices.sell[800]}],pay:'cash',ret:0,dep:false}}
+let sale=newSale();
+function totHTML(){const q=sale.items.reduce((s,i)=>s+(+i.qty||0),0),t=sale.items.reduce((s,i)=>s+(+i.qty||0)*(+i.price||0),0),b=Math.ceil(q/PER),r=b-(+sale.ret||0);
+return q?`<div class="hi row"><span class="mut">${q} دجاجة = ${b} سلة</span><b class="tx-acc" style="font-size:18px">${f(t)} ر.س</b></div>${r>0?`<label class="chk"><input type="checkbox" ${sale.dep?'checked':''} onchange="sale.dep=this.checked"> دفع تأمين ${DEP} ريال لكل سلة متبقية (${r*DEP} ر.س)</label>`:''}`:''}
+const upd=()=>{const e=document.getElementById('tot');e.innerHTML=totHTML();trNode(e)};
+function setW(i,w){sale.items[i].w=w;sale.items[i].price=day.prices.sell[w];R()}
+function rec(){
+ if(!sale.cust.trim())return tst('أدخل اسم الزبون',1);
+ const v=sale.items.filter(i=>+i.qty>0);if(!v.length)return tst('أدخل كمية واحدة على الأقل',1);
+ const need={};v.forEach(i=>need[i.w]=(need[i.w]||0)+ +i.qty);
+ for(const w in need)if(need[w]>day.stock[w])return tst(`الكمية ${w}g تتجاوز رصيد الثلاجة (${day.stock[w]})`,1);
+ const items=v.map(i=>({w:i.w,qty:+i.qty,price:+i.price,sub:i.qty*i.price}));
+ const q=items.reduce((s,i)=>s+i.qty,0),total=items.reduce((s,i)=>s+i.sub,0),b=Math.ceil(q/PER),id=Date.now();
+ const s={id,cust:sale.cust.trim(),items,total,baskets:b,ret:+sale.ret||0,dep:sale.dep,pay:sale.pay,time:new Date().toLocaleTimeString(LC(),{hour:'2-digit',minute:'2-digit'})};
+ items.forEach(i=>day.stock[i.w]-=i.qty);
+ day.sales.unshift(s);day.baskets.push({id,cust:s.cust,taken:b,ret:s.ret,dep:s.dep});
+ if(s.pay==='deferred')addDebt(s.cust,total,'فاتورة #'+String(id).slice(-4),'أجل بتاريخ '+tk());
+ sale=newSale();modal={t:'inv',s};sv();tst(`تم تسجيل بيع ${q} دجاجة بـ ${f(total)} ر.س`);R();
+}
+function delSale(id){if(!cf('حذف هذه الفاتورة؟'))return;const s=day.sales.find(x=>x.id===id);s.items.forEach(i=>day.stock[i.w]+=i.qty);day.sales=day.sales.filter(x=>x.id!==id);day.baskets=day.baskets.filter(b=>b.id!==id);sv();tst('تم حذف البيع وإعادة المخزون');R()}
+function retB(id,n){const b=day.baskets.find(x=>x.id===id);b.ret+=n;sv();tst(`تم تسجيل إرجاع ${n} سلة`);R()}
+function addP(){if(!np.qty||!np.cpu)return tst('أدخل الكمية والتكلفة',1);const p={id:Date.now(),w:np.w,qty:+np.qty,cpu:+np.cpu};day.purchases.push(p);day.stock[p.w]+=p.qty;np={w:np.w,qty:'',cpu:''};sv();tst(`أضيف ${p.qty} دجاجة للرصيد`);R()}
+function delP(id){const p=day.purchases.find(x=>x.id===id);day.stock[p.w]=Math.max(0,day.stock[p.w]-p.qty);day.purchases=day.purchases.filter(x=>x.id!==id);sv();R()}
+function addDebt(name,amount,ref,note){name=name.trim();if(!name||!amount)return;(debts[name]=debts[name]||{entries:[]}).entries.push({id:Date.now(),date:tk(),ref,amount:+amount,note,payments:[]})}
+function pay(){const e=debts[dsel].entries.find(x=>x.id===modal.id),a=+payAmt;if(!a||a<=0)return tst('أدخل مبلغاً صحيحاً',1);if(a>bal(e))return tst(`المبلغ أكبر من المتبقي (${f(bal(e))})`,1);e.payments.push({date:tk(),amount:a,note:payNote});modal=null;payAmt=payNote='';sv();tst('تم تسجيل الدفعة');R()}
+function payFull(id){const e=debts[dsel].entries.find(x=>x.id===id);e.payments.push({date:tk(),amount:bal(e),note:'سداد كامل'});sv();tst('تم تسجيل الدفعة');R()}
+function delE(id){if(!cf('حذف هذا القيد؟'))return;debts[dsel].entries=debts[dsel].entries.filter(x=>x.id!==id);if(!debts[dsel].entries.length){delete debts[dsel];dsel=null}sv();tst('تم حذف القيد');R()}
+function endDay(){if(!cf('تأكيد إنهاء اليوم وأرشفته؟'))return;arch=arch.filter(d=>d.date!==day.date);arch.push({...day,final:{...day.stock}});const n=emptyDay();n.open={...day.stock};n.prices=JSON.parse(JSON.stringify(day.prices));day=n;sale=newSale();scr='home';sv();tst('تم إنهاء اليوم وحفظه في الأرشيف');R()}
+function go(s){scr=s;if(s!=='debts')dsel=null;R();scrollTo(0,0)}
+
+/* views */
+const kpi=(t,v,c,u)=>`<div class="card k"><small>${t}</small><b class="${c}">${v}</b><small>${u}</small></div>`;
+const head=(t,back)=>`<div class="row" style="justify-content:flex-start;gap:10px"><button class="sm out" onclick="${back||"go('home')"}">← رجوع</button><h2 style="margin:0">${t}</h2></div><div style="height:12px"></div>`;
+const wRow=(cur,fn,extra)=>`<div class="g3">${W.map(w=>`<div class="w ${cur===w?'on':''}" onclick="${fn}(${w})">${w}g${extra?`<div style="font-size:9px;opacity:.7">${day.stock[w]} متاح</div>`:''}</div>`).join('')}</div>`;
+
+function startV(){return`<header><span></span><button class="tb" onclick="setLang()">${lang==='ar'?'EN':'ع'}</button><button class="tb" onclick="theme()">🌓</button></header>
+<div style="text-align:center;margin-bottom:24px"><div style="font-size:52px">🐔</div><h2 class="tx-acc" style="font-size:26px;margin:4px 0">المرعى الريفي للدواجن</h2><small>لوحة التشغيل اليومي</small></div>
+<div class="card"><span class="ct">رصيد الثلاجة - بداية اليوم</span>${W.map(w=>`<div class="fg"><label>عدد الدجاجات وزن ${w}g</label><input type="number" inputmode="numeric" value="${day.open[w]||''}" oninput="day.open[${w}]=+this.value"></div>`).join('')}</div>
+<div class="card"><span class="ct">أسعار اليوم (بالحبة)</span>${W.map(w=>`<div style="margin-bottom:14px"><b class="tx-acc">وزن ${w} جرام</b><div class="g2" style="margin-top:8px"><div><label>سعر البيع</label><input type="number" value="${day.prices.sell[w]}" oninput="day.prices.sell[${w}]=+this.value"></div><div><label>سعر الشراء</label><input type="number" value="${day.prices.buy[w]}" oninput="day.prices.buy[${w}]=+this.value"></div></div></div>`).join('')}</div>
+<button class="grn" onclick="day.stock={...day.open};day.started=true;sale=newSale();sv();R()">ابدأ اليوم 🚀</button>`}
+
+function homeV(){const od=owing(),dt=od.reduce((s,n)=>s+rb(n),0),pb=pending();return`<h2>لوحة اليوم</h2>
+<div class="g3" style="gap:8px">${kpi('المبيعات',f(rev(day)),'tx-acc','ر.س')}${kpi('الربح',f(prof(day)),'tx-grn','ر.س')}${kpi('الفواتير',day.sales.length,'tx-blu','اليوم')}</div>
+<div class="cols"><div><div class="card"><div class="row"><span class="ct" style="margin:0">رصيد الثلاجة</span><button class="sm blu" onclick="modal={t:'stock'};R()">تعديل</button></div><div class="g3">${W.map(w=>`<div class="box"><small>${w}g</small><div class="big ${day.stock[w]<50?'tx-red':''}">${day.stock[w]}</div><small>دجاجة</small><div class="tx-acc" style="font-size:10px;font-weight:700">${day.prices.sell[w]} ر.س</div></div>`).join('')}</div></div>
+<div class="g2" style="margin-bottom:10px"><button class="out" onclick="modal={t:'prices'};R()">الأسعار</button><button class="out" onclick="go('buy')">استلام</button></div>
+<button class="acc" style="margin-bottom:10px" onclick="go('sale')">+ تسجيل بيع جديد</button>
+<div class="g2" style="margin-bottom:12px"><button class="out" onclick="go('settle')">تسوية المندوب</button><button class="out" onclick="go('report')">تقرير اليوم</button></div>
+${pb>0?`<div class="card hi" onclick="go('baskets')"><b class="tx-acc">🧺 سلال معلقة عند الزبائن</b><br><small>${pb} سلة لم تسترجع</small></div>`:''}
+${dt>0?`<div class="card hi warn" onclick="go('debts')"><b class="tx-red">📒 مديونيات المطاعم</b><br><small>${od.length} مطعم مدين - الإجمالي: ${f(dt)} ر.س</small></div>`:''}
+</div><div>${day.sales.length?`<div class="card"><span class="ct">آخر المبيعات</span>${day.sales.slice(0,6).map(s=>`<div class="item"><div class="row" style="margin:0"><div><b>${s.cust}</b><br><small>${s.items.map(i=>i.qty+'×'+i.w+'g').join(' | ')}</small></div><div style="text-align:end"><b class="tx-acc">${f(s.total)} ر.س</b><br><span class="tag tx-${pc(s.pay)}">${pm(s.pay)}</span></div></div><div style="display:flex;gap:6px;margin-top:7px"><button class="sm blu" onclick="modal={t:'inv',s:day.sales.find(x=>x.id==${s.id})};R()">فاتورة</button><button class="sm red" onclick="delSale(${s.id})">حذف</button></div></div>`).join('')}</div>`:''}</div></div>`}
+
+function saleV(){return`${head('تسجيل بيع')}<div class="card">
+<div class="fg"><label>اسم الزبون</label><input type="text" placeholder="مثال: أبو محمد" value="${sale.cust.replace(/"/g,'&quot;')}" oninput="sale.cust=this.value"></div>
+${sale.items.map((it,i)=>`<div class="box" style="text-align:start;margin-bottom:10px;padding:12px"><div class="row"><b class="tx-acc" style="font-size:13px">صنف #${i+1}</b>${sale.items.length>1?`<button class="sm red" onclick="sale.items.splice(${i},1);R()">حذف</button>`:''}</div>
+${wRow(it.w,`setW.bind(0,${i})`,1).replace(/setW\.bind\(0,(\d+)\)\((\d+)\)/g,'setW($1,$2)')}
+<div class="g2" style="margin-top:10px"><div><label>العدد (حبة)</label><input type="number" inputmode="numeric" placeholder="0" value="${it.qty}" oninput="sale.items[${i}].qty=this.value;upd()"></div><div><label>السعر / حبة</label><input type="number" value="${it.price}" oninput="sale.items[${i}].price=this.value;upd()"></div></div></div>`).join('')}
+<button class="sm blu" style="width:100%;padding:10px;margin-bottom:12px" onclick="sale.items.push({w:800,qty:'',price:day.prices.sell[800]});R()">+ إضافة صنف آخر</button>
+<div id="tot">${totHTML()}</div>
+<div class="fg"><label>طريقة الدفع</label><div class="g3">${['cash','network','deferred'].map(p=>`<div class="w ${sale.pay===p?'on':''}" onclick="sale.pay='${p}';R()">${pm(p)}</div>`).join('')}</div>${sale.pay==='deferred'?'<small class="tx-red" style="display:block;margin-top:8px">سيتم ترحيل الفاتورة تلقائياً إلى دفتر الديون</small>':''}</div>
+<div class="fg"><label>سلال معادة فوراً</label><input type="number" placeholder="0" value="${sale.ret||''}" oninput="sale.ret=this.value;upd()"></div>
+<button class="grn" onclick="rec()">تأكيد البيع وعرض الفاتورة</button></div>`}
+
+function buyV(){const t=day.purchases.reduce((s,p)=>s+p.qty*p.cpu,0);return`${head('استلام من المسلخ')}<div class="card"><span class="ct">إضافة استلام</span>${wRow(np.w,'(w=>{np.w=w;R()})')}
+<div class="g2" style="margin-top:12px"><div><label>عدد الدجاجات</label><input type="number" value="${np.qty}" oninput="np.qty=this.value"></div><div><label>تكلفة الحبة (ريال)</label><input type="number" value="${np.cpu}" oninput="np.cpu=this.value"></div></div>
+<button class="acc" style="margin-top:12px" onclick="addP()">+ إضافة للمخزون</button></div>
+${day.purchases.length?`<div class="card"><span class="ct">سجل الاستلام اليوم</span>${day.purchases.map(p=>`<div class="item row"><div><b>${p.qty} دجاجة × ${p.w}g</b><br><small>تكلفة الحبة: ${p.cpu} ر.س | إجمالي: ${f(p.qty*p.cpu)} ر.س</small></div><button class="sm red" onclick="delP(${p.id})">حذف</button></div>`).join('')}<div class="row" style="margin:8px 0 0"><b>إجمالي تكلفة المشتريات</b><b class="tx-acc">${f(t)} ر.س</b></div></div>`:''}`}
+
+function basketsV(){const t=day.baskets.reduce((s,b)=>s+b.taken,0),r=day.baskets.reduce((s,b)=>s+b.ret,0);return`${head('متابعة السلال')}<div class="card"><div class="row"><span class="mut">إجمالي المعطاة</span><b>${t} سلة</b></div><div class="row"><span class="mut">المرجعة</span><b class="tx-grn">${r} سلة</b></div><div class="row" style="margin:0"><span class="mut">المتبقية في السوق</span><b class="${t-r>0?'tx-red':'tx-grn'}">${t-r} سلة</b></div></div>
+${day.baskets.filter(b=>b.taken>b.ret).map(b=>`<div class="card"><div class="row"><div><b>${b.cust}</b><br><small>أخذ: ${b.taken} | أرجع: ${b.ret}</small></div><b class="tx-red">باقي: ${b.taken-b.ret}</b></div><div style="display:flex;gap:6px;flex-wrap:wrap">${[1,2,5,10].filter(n=>n<=b.taken-b.ret).map(n=>`<button class="sm acc" onclick="retB(${b.id},${n})">+ إرجاع ${n}</button>`).join('')}<button class="sm grn" onclick="retB(${b.id},${b.taken-b.ret})">إرجاع الكل ✓</button></div>${b.dep?'<span class="tag tx-grn" style="display:inline-block;margin-top:8px">✓ دافع تأمين</span>':''}</div>`).join('')}
+${day.baskets.filter(b=>b.taken===b.ret).map(b=>`<div class="card row" style="opacity:.5"><span>${b.cust}</span><span class="tag tx-grn">مكتمل ✓</span></div>`).join('')}`}
+
+function debtsV(){
+ if(dsel&&debts[dsel]){const d=debts[dsel],o=d.entries.reduce((s,e)=>s+e.amount,0),b=rb(dsel);return`${head(dsel,"dsel=null;R()")}
+ <div class="card" style="border-inline-start:4px solid var(--${b>0?'red':'grn'})"><div class="g3"><div class="k"><small>إجمالي الديون</small><b class="tx-red" style="font-size:20px">${f(o)}</b></div><div class="k"><small>المدفوع</small><b class="tx-grn" style="font-size:20px">${f(o-b)}</b></div><div class="k"><small>المتبقي</small><b class="${b>0?'tx-red':'tx-grn'}" style="font-size:20px">${f(b)}</b></div></div></div>
+ ${[...d.entries].reverse().map(e=>{const r=bal(e);return`<div class="card" style="opacity:${r?1:.75}"><div class="row" style="align-items:flex-start"><div><b>${e.ref||'فاتورة دين'}</b><br><small>${e.date}${e.note?' • '+e.note:''}</small></div><div style="text-align:end"><b class="${r?'tx-red':'tx-grn'}">${r?f(r)+' ر.س':'مسدد ✓'}</b><br><small>من أصل ${f(e.amount)} ر.س</small></div></div>
+ ${e.payments.length?`<div class="box" style="text-align:start">${e.payments.map(p=>`<div class="row" style="margin:2px 0;font-size:12px"><span class="mut">${p.date}${p.note?' • '+p.note:''}</span><b class="tx-grn">+${f(p.amount)} ر.س</b></div>`).join('')}</div>`:''}
+ <div style="display:flex;gap:8px;margin-top:10px">${r?`<button class="sm grn" style="flex:1" onclick="modal={t:'pay',id:${e.id}};R()">تسجيل دفعة</button><button class="sm blu" style="flex:1" onclick="payFull(${e.id})">سداد كامل ✓</button>`:''}<button class="sm red" onclick="delE(${e.id})">حذف</button></div></div>`}).join('')}`}
+ const names=Object.keys(debts).sort((a,b)=>rb(b)-rb(a)),od=owing();
+ return`<div class="row"><h2 style="margin:0">كشف المديونيات</h2><button class="sm acc" onclick="modal={t:'manual'};R()">+ دين يدوي</button></div><div style="height:12px"></div>
+ <div class="g2">${kpi('إجمالي المديونيات',f(od.reduce((s,n)=>s+rb(n),0)),'tx-red','ر.س')}${kpi('مطاعم مدينة',od.length,'tx-acc','مطعم')}</div>
+ ${names.length?names.map((n,i)=>{const d=debts[n],o=d.entries.reduce((s,e)=>s+e.amount,0),b=rb(n),pct=o?Math.round((o-b)/o*100):0;return`<div class="card" onclick="dsel=Object.keys(debts).sort((a,b)=>rb(b)-rb(a))[${i}];R()" style="cursor:pointer"><div class="row"><div><b>${n}</b><br><small>${d.entries.length} فاتورة • مسدد منها ${d.entries.filter(e=>!bal(e)).length}</small></div>${b>0?`<b class="tx-red" style="font-size:18px">${f(b)} ر.س</b>`:'<span class="tag tx-grn">مسدد بالكامل</span>'}</div><div class="row"><small>مدفوع: ${f(o-b)} ر.س</small><small>${pct}%</small></div><div class="bar"><div style="width:${pct}%;background:var(--${pct===100?'grn':'acc'})"></div></div></div>`}).join(''):'<div class="card k" style="padding:40px 20px"><div style="font-size:40px">🎉</div><b class="tx-grn" style="font-size:16px">لا توجد مديونيات</b><small>أضف دين يدوي أو بع بالآجل لتظهر هنا</small></div>'}`}
+
+function reportV(){const sold=w=>day.sales.flatMap(s=>s.items).filter(i=>i.w===w).reduce((s,i)=>s+i.qty,0),got=w=>day.purchases.filter(p=>p.w===w).reduce((s,p)=>s+p.qty,0),by=m=>day.sales.filter(s=>s.pay===m).reduce((s,x)=>s+x.total,0);
+return`${head('تقرير اليوم')}<div class="card"><span class="ct">حركة الثلاجة</span>${W.map(w=>`<div class="item"><b class="tx-acc">وزن ${w} جرام</b><div class="row" style="margin:6px 0 0"><span class="mut">رصيد البداية</span><span>${day.open[w]||0}</span></div><div class="row" style="margin:4px 0 0"><span class="mut">وارد من المسلخ</span><span class="tx-grn">+${got(w)}</span></div><div class="row" style="margin:4px 0 0"><span class="mut">المبيعات</span><span class="tx-red">-${sold(w)}</span></div><div class="row" style="margin:4px 0 0"><b>الرصيد المتبقي</b><b class="tx-acc">${day.stock[w]} دجاجة</b></div></div>`).join('')}</div>
+<div class="card"><span class="ct">ملخص المبيعات</span><div class="row"><span class="mut">عدد الفواتير</span><b>${day.sales.length}</b></div>${['cash','network','deferred'].map(m=>`<div class="row"><span class="mut">${pm(m)}</span><span class="tx-${pc(m)}">${f(by(m))} ر.س</span></div>`).join('')}<div class="row"><span class="mut">تكلفة المشتريات</span><span>${f(cost(day))} ر.س</span></div><div class="row"><b>صافي الربح التقريبي</b><b class="tx-grn">${f(prof(day))} ر.س</b></div><div class="row" style="margin:0;border-top:1px solid var(--bd);padding-top:8px"><b>إجمالي المبيعات</b><b class="tx-acc" style="font-size:18px">${f(rev(day))} ر.س</b></div></div>
+<div class="card hi"><small style="display:block;margin-bottom:10px">عند إنهاء اليوم يُحفظ في الأرشيف ويُرحَّل رصيد الثلاجة كبداية للغد.</small><button class="grn" onclick="endDay()">إنهاء اليوم وحفظه في الأرشيف 🔒</button></div>`}
+
+function archV(){
+ if(!arch.length)return`<h2>الأرشيف والتقارير</h2><div class="card k" style="padding:40px 20px"><div style="font-size:40px">📂</div><b class="mut">لا يوجد أرشيف بعد</b><br><small>أنهِ يوماً من تقرير اليوم لتظهر بياناته هنا</small></div>`;
+ const ms={};arch.forEach(d=>(ms[d.date.slice(0,7)]=ms[d.date.slice(0,7)]||[]).push(d));
+ return`<h2>الأرشيف والتقارير</h2><div class="g2">${kpi('إجمالي المبيعات',f(arch.reduce((s,d)=>s+rev(d),0)),'tx-acc','خلال '+arch.length+' يوم')}${kpi('إجمالي الأرباح',f(arch.reduce((s,d)=>s+prof(d),0)),'tx-grn','منذ البداية')}</div>
+ ${Object.keys(ms).sort().reverse().map(m=>{const ds=ms[m].sort((a,b)=>b.date.localeCompare(a.date)),r=ds.reduce((s,d)=>s+rev(d),0),p=ds.reduce((s,d)=>s+prof(d),0);return`<div class="card"><div class="row"><div><b style="font-size:15px">${ml(m)}</b><br><small>${ds.length} يوم عمل • متوسط يومي ${f(Math.round(r/ds.length))} • هامش ${r?Math.round(p/r*100):0}%</small></div><div style="text-align:end"><b class="tx-acc">${f(r)} ر.س</b><br><small class="tx-grn" style="font-weight:700">الربح: ${f(p)}</small></div></div>${ds.map(d=>`<div class="item row" style="margin:0;cursor:pointer" onclick="modal={t:'day',date:'${d.date}'};R()"><div><b>${dl(d.date)}</b><br><small>${d.sales.length} فاتورة • ${units(d)} دجاجة</small></div><div style="text-align:end"><b class="tx-acc">${f(rev(d))} ر.س</b><br><small class="tx-grn">${f(prof(d))}</small></div></div>`).join('')}</div>`}).join('')}`}
+
+function modalV(){if(!modal)return'';const m=modal;let b='';
+ if(m.t==='inv'){const s=m.s;b=`<div class="k" style="margin-bottom:16px"><div style="font-size:32px">🧾</div><b class="tx-acc" style="font-size:18px">فاتورة زبون</b><br><small>${s.time||''}</small></div>
+ <div class="card" style="box-shadow:none"><div class="row"><span class="mut">الزبون</span><b>${s.cust}</b></div><div class="row" style="margin:0"><span class="mut">الدفع</span><span class="tag tx-${pc(s.pay)}">${pm(s.pay)}</span></div></div>
+ <div class="card" style="box-shadow:none">${s.items.map(i=>`<div class="item row" style="margin:0"><span class="mut">${i.qty} × ${i.w}g</span><b>${f(i.price)} × ${i.qty} = ${f(i.sub)} ر.س</b></div>`).join('')}<div class="row" style="margin:10px 0 0"><b>الإجمالي</b><b class="tx-acc" style="font-size:22px">${f(s.total)} ر.س</b></div></div>
+ <div class="card" style="box-shadow:none"><div class="row"><span class="mut">عدد السلال</span><b>${s.baskets} سلة</b></div><div class="row"><span class="mut">سلال معادة</span><b class="tx-grn">${s.ret||0}</b></div><div class="row" style="margin:0"><span class="mut">سلال متبقية</span><b class="${s.baskets-(s.ret||0)>0?'tx-red':'tx-grn'}">${Math.max(0,s.baskets-(s.ret||0))}</b></div>${s.dep?'<span class="tag tx-grn" style="display:inline-block;margin-top:8px">✓ تم دفع التأمين</span>':''}</div><button class="acc" onclick="modal=null;R()">إغلاق</button>`}
+ if(m.t==='stock')b=`<h3 class="tx-acc">تعديل رصيد الثلاجة</h3>${W.map(w=>`<div class="fg"><label>وزن ${w}g - الرصيد الحالي</label><input type="number" value="${day.stock[w]}" oninput="day.stock[${w}]=+this.value;sv()"></div>`).join('')}<button class="acc" onclick="modal=null;R()">حفظ التعديل</button>`;
+ if(m.t==='prices')b=`<h3 class="tx-acc">تعديل الأسعار اليومية</h3>${W.map(w=>`<div class="card" style="box-shadow:none"><b class="tx-acc">وزن ${w} جرام</b><div class="g2" style="margin-top:8px"><div><label>سعر البيع</label><input type="number" value="${day.prices.sell[w]}" oninput="day.prices.sell[${w}]=+this.value;sv()"></div><div><label>سعر الشراء</label><input type="number" value="${day.prices.buy[w]}" oninput="day.prices.buy[${w}]=+this.value;sv()"></div></div></div>`).join('')}<button class="acc" onclick="sale=newSale();modal=null;tst('تم تحديث الأسعار');R()">حفظ الأسعار</button>`;
+ if(m.t==='pay'){const e=debts[dsel].entries.find(x=>x.id===m.id);b=`<h3 class="tx-acc">تسجيل دفعة سداد</h3><small>${dsel}</small><div class="card" style="box-shadow:none;margin-top:12px"><div class="row"><span class="mut">المبلغ الأصلي</span><span>${f(e.amount)} ر.س</span></div><div class="row" style="margin:0"><span class="mut">المتبقي</span><b class="tx-red">${f(bal(e))} ر.س</b></div></div><div class="fg"><label>المبلغ المدفوع (ريال)</label><input type="number" placeholder="أقصى مبلغ: ${bal(e)}" value="${payAmt}" oninput="payAmt=this.value"></div><div class="fg"><label>ملاحظة (اختياري)</label><input type="text" value="${payNote}" oninput="payNote=this.value"></div><div class="g2"><button class="red" onclick="modal=null;R()">إلغاء</button><button class="grn" onclick="pay()">حفظ الدفعة</button></div>`}
+ if(m.t==='manual')b=`<h3 class="tx-acc">إضافة دين يدوي</h3><div class="fg"><label>اسم المطعم</label><input type="text" value="${md.n}" oninput="md.n=this.value"></div><div class="fg"><label>المبلغ (ريال)</label><input type="number" value="${md.a}" oninput="md.a=this.value"></div><div class="fg"><label>ملاحظة (اختياري)</label><input type="text" value="${md.note}" oninput="md.note=this.value"></div><div class="g2"><button class="red" onclick="modal=null;R()">إلغاء</button><button class="acc" onclick="if(!md.n||!md.a)return tst('أكمل البيانات',1);addDebt(md.n,md.a,'قيد يدوي',md.note);md={n:'',a:'',note:''};modal=null;sv();tst('تم إضافة الدين');R()">إضافة</button></div>`;
+ if(m.t==='day'){const d=arch.find(x=>x.date===m.date);b=`<h3 class="tx-acc">تقرير يوم ${dl(d.date)}</h3><div class="g2">${kpi('المبيعات',f(rev(d)),'tx-grn','ر.س')}${kpi('الربح',f(prof(d)),'tx-acc','ر.س')}</div><div class="card" style="box-shadow:none"><span class="ct">الفواتير (${d.sales.length})</span>${d.sales.map(s=>`<div class="item row" style="margin:0"><div><b>${s.cust}</b><br><small>${s.items.map(i=>i.qty+'×'+i.w+'g').join(' | ')}</small></div><b class="tx-acc">${f(s.total)} ر.س</b></div>`).join('')}</div>${(d.purchases||[]).length?`<div class="card" style="box-shadow:none"><span class="ct">مشتريات المسلخ</span>${d.purchases.map(p=>`<div class="row"><span class="mut">${p.qty} دجاجة (${p.w}g)</span><b>${f(p.qty*p.cpu)} ر.س</b></div>`).join('')}</div>`:''}<button class="acc" onclick="modal=null;R()">إغلاق</button>`}
+ return`<div class="mb" onclick="modal=null;R()"><div class="mx" onclick="event.stopPropagation()">${b}</div></div>`}
+
+function R0(){
+ const a=document.getElementById('app');
+ if(!day.started){a.innerHTML=startV();return}
+ const nav=[['home','🏠','الرئيسية',0],['sale','🛒','بيع جديد',0],['baskets','🧺','السلال',pending()],['debts','📒','المديونيات',owing().length],['archive','📂','الأرشيف',0],['buy','📥','استلام',0,1],['settle','🧾','تسوية المندوب',0,1],['report','📊','تقرير اليوم',0,1]];
+ const body={home:homeV,sale:saleV,buy:buyV,baskets:basketsV,debts:debtsV,report:reportV,archive:archV,settle:settleV}[scr]();
+ a.innerHTML=`<header><div><b class="tx-acc" style="font-size:17px">🐔 المرعى الريفي</b><br><small>${new Date().toLocaleDateString(LC(),{weekday:'long',month:'long',day:'numeric'})}</small></div><div style="display:flex;gap:10px;align-items:center"><div><small>المبيعات</small><br><b class="tx-acc" style="font-size:19px">${f(rev(day))}</b></div><button class="tb" onclick="setLang()">${lang==='ar'?'EN':'ع'}</button><button class="tb" onclick="theme()">🌓</button></div></header>${body}${modalV()}<nav>${nav.map(n=>`<button class="${scr===n[0]?'on':''}${n[4]?' dsk':''}" onclick="go('${n[0]}')"><span>${n[1]}</span>${n[2]}${n[3]>0?`<i>${n[3]}</i>`:''}</button>`).join('')}</nav>`;
+}
+/* settlement */
+let ni={r:'',a:''},ne={d:'',a:''};
+const sm=a=>a.reduce((s,x)=>s+x.a,0);
+function addI(){if(!ni.r||!ni.a)return;day.agentInv.push({id:Date.now(),r:ni.r,a:+ni.a});ni={r:'',a:''};sv();R()}
+function addX(){if(!ne.d||!ne.a)return;day.agentExp.push({id:Date.now(),d:ne.d,a:+ne.a});ne={d:'',a:''};sv();R()}
+function cashHTML(){const net=sm(day.agentInv)-sm(day.agentExp),has=day.agentCash!=='',df=net-(+day.agentCash);
+return`<div class="box" style="text-align:start;padding:14px"><div class="row"><span class="mut">إجمالي الفواتير</span><span>${f(sm(day.agentInv))} ر.س</span></div><div class="row"><span class="mut">المصاريف</span><span class="tx-red">-${f(sm(day.agentExp))} ر.س</span></div><div class="row" style="border-top:1px solid var(--bd);padding-top:8px;margin:0"><b>الصافي المطلوب</b><b class="tx-acc">${f(net)} ر.س</b></div>${has?`<div class="hi${df?' warn':''}" style="margin:10px 0 0"><b class="${df?'tx-red':'tx-grn'}">${df===0?'✓ الكاش مطابق تماماً':df>0?'عجز في الكاش: '+f(df)+' ر.س':'فائض في الكاش: '+f(-df)+' ر.س'}</b></div>`:''}</div>`}
+function updCash(){const e=document.getElementById('cash');e.innerHTML=cashHTML();trNode(e)}
+function settleV(){return`${head('تسوية المندوب')}<div class="cols"><div>
+<div class="card"><span class="ct">+ فاتورة مطعم</span><div class="g2"><div><label>اسم المطعم</label><input type="text" value="${ni.r.replace(/"/g,'&quot;')}" oninput="ni.r=this.value"></div><div><label>المبلغ (ريال)</label><input type="number" value="${ni.a}" oninput="ni.a=this.value"></div></div><button class="acc" style="margin-top:10px" onclick="addI()">إضافة</button></div>
+${day.agentInv.length?`<div class="card"><span class="ct">فواتير المطاعم</span>${day.agentInv.map(x=>`<div class="item row" style="margin:0"><b>${x.r}</b><span style="display:flex;gap:8px;align-items:center"><b>${f(x.a)} ر.س</b><button class="sm red" onclick="day.agentInv=day.agentInv.filter(y=>y.id!==${x.id});sv();R()">×</button></span></div>`).join('')}<div class="row" style="margin:8px 0 0"><b>الإجمالي</b><b class="tx-acc">${f(sm(day.agentInv))} ر.س</b></div></div>`:''}
+<div class="card"><span class="ct">مصاريف المندوب (بنزين، تصليح، زيت)</span><div class="g2"><div><label>البيان</label><input type="text" placeholder="مثال: تصليح بنشر" value="${ne.d.replace(/"/g,'&quot;')}" oninput="ne.d=this.value"></div><div><label>المبلغ (ريال)</label><input type="number" value="${ne.a}" oninput="ne.a=this.value"></div></div><button class="red" style="margin-top:10px" onclick="addX()">+ إضافة مصروف</button>
+${day.agentExp.map(x=>`<div class="item row" style="margin:0"><span class="mut">${x.d}</span><span style="display:flex;gap:8px;align-items:center"><b class="tx-red">-${f(x.a)} ر.س</b><button class="sm red" onclick="day.agentExp=day.agentExp.filter(y=>y.id!==${x.id});sv();R()">×</button></span></div>`).join('')}</div></div>
+<div><div class="card"><span class="ct">مطابقة الكاش</span><div class="fg"><label>الكاش اللي سلمه المندوب فعلياً (ريال)</label><input type="number" value="${day.agentCash}" oninput="day.agentCash=this.value;sv();updCash()"></div><div id="cash">${cashHTML()}</div></div></div></div>`}
+
+/* language */
+let lang=(()=>{try{const l=localStorage.getItem('almaraa_lang');if(l)return l}catch{}return (navigator.language||'ar').startsWith('ar')?'ar':'en'})();
+const LC=()=>lang==='ar'?'ar-SA':'en-US';
+function setLang(){lang=lang==='ar'?'en':'ar';try{localStorage.setItem('almaraa_lang',lang)}catch{}R()}
+const cf=m=>confirm(T(m));
+const EN=[["المرعى الريفي للدواجن","Al-Maraa Poultry Farm"],["المرعى الريفي","Al-Maraa"],["لوحة التشغيل اليومي","Daily operations dashboard"],["رصيد الثلاجة - بداية اليوم","Freezer stock - start of day"],["عدد الدجاجات وزن","Chicken count, weight"],["أسعار اليوم (بالحبة)","Today's prices (per chicken)"],["وزن","Weight"],["جرام","g"],["سعر البيع","Sell price"],["سعر الشراء","Buy price"],["ابدأ اليوم","Start day"],["لوحة اليوم","Today's dashboard"],["المبيعات","Sales"],["الربح","Profit"],["الفواتير","Invoices"],["اليوم","Today"],["ر.س","SAR"],["ريال","SAR"],["رصيد الثلاجة","Freezer stock"],["تعديل","Edit"],["دجاجة","chickens"],["الأسعار","Prices"],["استلام","Receive"],["+ تسجيل بيع جديد","+ New sale"],["تسوية المندوب","Agent settlement"],["تقرير اليوم","Today's report"],["سلال معلقة عند الزبائن","Baskets held by customers"],["سلة لم تسترجع","baskets not returned"],["مديونيات المطاعم","Restaurant debts"],["مطعم مدين","restaurants owing"],["الإجمالي","Total"],["آخر المبيعات","Recent sales"],["فاتورة دين","Debt invoice"],["فاتورة #","Invoice #"],["فاتورة زبون","Customer invoice"],["فاتورة","Invoice"],["حذف هذه الفاتورة؟","Delete this invoice?"],["حذف هذا القيد؟","Delete this entry?"],["حذف","Delete"],["كاش","Cash"],["شبكة","Card"],["آجل","Credit"],["رجوع","Back"],["تسجيل بيع","Record sale"],["اسم الزبون","Customer name"],["مثال: أبو محمد","e.g. Abu Mohammed"],["صنف","Item"],["متاح","available"],["العدد (حبة)","Quantity (chickens)"],["السعر / حبة","Price / chicken"],["+ إضافة صنف آخر","+ Add another item"],["سلة","baskets"],["طريقة الدفع","Payment method"],["سيتم ترحيل الفاتورة تلقائياً إلى دفتر الديون","The invoice will be added to the debt ledger automatically"],["سلال معادة فوراً","Baskets returned now"],["دفع تأمين","Paid a deposit of"],["لكل سلة متبقية","per remaining basket"],["تأكيد البيع وعرض الفاتورة","Confirm sale & show invoice"],["استلام من المسلخ","Receive from slaughterhouse"],["إضافة استلام","Add receipt"],["عدد الدجاجات","Number of chickens"],["تكلفة الحبة (ريال)","Cost per chicken (SAR)"],["تكلفة الحبة","Cost per chicken"],["+ إضافة للمخزون","+ Add to stock"],["سجل الاستلام اليوم","Today's receipts"],["إجمالي تكلفة المشتريات","Total purchase cost"],["إجمالي","Total"],["متابعة السلال","Basket tracking"],["إجمالي المعطاة","Total given"],["المرجعة","Returned"],["المتبقية في السوق","Still out"],["باقي","Left"],["أخذ","Took"],["أرجع","Returned"],["+ إرجاع","+ Return"],["إرجاع الكل","Return all"],["دافع تأمين","Deposit paid"],["مكتمل","Done"],["كشف المديونيات","Debt ledger"],["+ دين يدوي","+ Manual debt"],["إجمالي المديونيات","Total debts"],["مطاعم مدينة","Restaurants owing"],["مطعم","restaurant"],["مسدد بالكامل","Fully paid"],["مسدد منها","paid:"],["مسدد","Paid"],["مدفوع","Paid"],["المدفوع","Paid"],["المتبقي","Remaining"],["إجمالي الديون","Total owed"],["من أصل","of"],["تسجيل دفعة سداد","Record payment"],["تسجيل دفعة","Record payment"],["سداد كامل","Pay in full"],["المبلغ الأصلي","Original amount"],["المبلغ المدفوع (ريال)","Amount paid (SAR)"],["أقصى مبلغ","Max"],["ملاحظة (اختياري)","Note (optional)"],["إلغاء","Cancel"],["حفظ الدفعة","Save payment"],["إضافة دين يدوي","Add manual debt"],["اسم المطعم","Restaurant name"],["المبلغ (ريال)","Amount (SAR)"],["إضافة","Add"],["قيد يدوي","Manual entry"],["لا توجد مديونيات","No debts"],["أضف دين يدوي أو بع بالآجل لتظهر هنا","Add a manual debt or sell on credit to see it here"],["أجل بتاريخ","Credit on"],["فاتورة","Invoice"],["حركة الثلاجة","Freezer movement"],["رصيد البداية","Opening stock"],["وارد من المسلخ","Received"],["الرصيد المتبقي","Remaining stock"],["ملخص المبيعات","Sales summary"],["عدد الفواتير","Invoices count"],["تكلفة المشتريات","Purchase cost"],["صافي الربح التقريبي","Approx. net profit"],["إجمالي المبيعات","Total sales"],["عند إنهاء اليوم يُحفظ في الأرشيف ويُرحَّل رصيد الثلاجة كبداية للغد.","Ending the day archives it and carries the freezer stock over as tomorrow's opening."],["إنهاء اليوم وحفظه في الأرشيف","End day & archive"],["الأرشيف والتقارير","Archive & reports"],["لا يوجد أرشيف بعد","No archive yet"],["أنهِ يوماً من تقرير اليوم لتظهر بياناته هنا","End a day from the report to see it here"],["إجمالي الأرباح","Total profit"],["خلال","over"],["يوم عمل","working days"],["يوم","days"],["منذ البداية","since the start"],["متوسط يومي","Daily avg"],["هامش","Margin"],["الربح:","Profit:"],["تقرير يوم","Report for"],["مشتريات المسلخ","Slaughterhouse purchases"],["الزبون","Customer"],["الدفع","Payment"],["عدد السلال","Baskets count"],["سلال معادة","Baskets returned"],["سلال متبقية","Baskets remaining"],["تم دفع التأمين","Deposit paid"],["إغلاق","Close"],["تعديل رصيد الثلاجة","Edit freezer stock"],["الرصيد الحالي","current stock"],["حفظ التعديل","Save"],["تعديل الأسعار اليومية","Edit today's prices"],["حفظ الأسعار","Save prices"],["تم تحديث الأسعار","Prices updated"],["الرئيسية","Home"],["بيع جديد","New sale"],["السلال","Baskets"],["المديونيات","Debts"],["الأرشيف","Archive"],["أدخل اسم الزبون","Enter the customer name"],["أدخل كمية واحدة على الأقل","Enter at least one quantity"],["الكمية","Quantity"],["تتجاوز رصيد الثلاجة","exceeds freezer stock"],["تم تسجيل بيع","Sale recorded:"],["بـ","for"],["تم حذف البيع وإعادة المخزون","Sale deleted, stock restored"],["تم تسجيل إرجاع","Returned"],["أدخل الكمية والتكلفة","Enter quantity and cost"],["أضيف","Added"],["للرصيد","to stock"],["أدخل مبلغاً صحيحاً","Enter a valid amount"],["المبلغ أكبر من المتبقي","Amount exceeds the remaining balance"],["تم تسجيل الدفعة","Payment recorded"],["تم حذف القيد","Entry deleted"],["تم إنهاء اليوم وحفظه في الأرشيف","Day ended and archived"],["تم إضافة الدين","Debt added"],["أكمل البيانات","Fill in all fields"],["تأكيد إنهاء اليوم وأرشفته؟","End the day and archive it?"],["+ فاتورة مطعم","+ Restaurant invoice"],["فواتير المطاعم","Restaurant invoices"],["مصاريف المندوب (بنزين، تصليح، زيت)","Agent expenses (fuel, repairs, oil)"],["البيان","Description"],["مثال: تصليح بنشر","e.g. Tire repair"],["+ إضافة مصروف","+ Add expense"],["المصاريف","Expenses"],["مطابقة الكاش","Cash reconciliation"],["الكاش اللي سلمه المندوب فعلياً (ريال)","Cash the agent actually handed over (SAR)"],["إجمالي الفواتير","Invoices total"],["الصافي المطلوب","Net due"],["✓ الكاش مطابق تماماً","✓ Cash matches exactly"],["عجز في الكاش","Cash shortfall"],["فائض في الكاش","Cash surplus"]].sort((a,b)=>b[0].length-a[0].length);
+const trs=x=>{for(const[a,b]of EN)if(x.includes(a))x=x.split(a).join(b);return x};
+const T=x=>lang==='en'?trs(x):x;
+function trNode(root){if(lang!=='en')return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode())if(/[\u0600-\u06FF]/.test(n.nodeValue))n.nodeValue=trs(n.nodeValue);root.querySelectorAll('[placeholder]').forEach(e=>e.placeholder=trs(e.placeholder))}
+function R(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';R0();document.title=T('المرعى الريفي للدواجن');trNode(document.getElementById('app'))}
+
+R();
+</script>
+</body>
+</html>
